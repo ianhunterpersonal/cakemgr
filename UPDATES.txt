@@ -2,3 +2,4 @@ Updates to Project Summary...
 
 1. Added more comprehensive .gitignore
 2. Fixed issue in which 404 recieved on endpoint /cakes, also restructured packages to be eclipse friendly
+3. Create a minimal starting spring boot application with HSQLDB as embedded memory DB
