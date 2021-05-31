@@ -7,6 +7,11 @@
   <version>1.0-SNAPSHOT</version>
   <name>cake-manager Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  <properties>
+    <jettyVersion>9.4.41.v20210516</jettyVersion>
+  </properties>
+  
   <dependencies>
 
       <!-- Servlet -->
@@ -45,6 +50,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${jettyVersion}</version>
+    </dependency>
+    
   </dependencies>
   <build>
     <finalName>cake-manager</finalName>
@@ -62,6 +73,7 @@
         <plugin>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-maven-plugin</artifactId>
+		      <version>${jettyVersion}</version>
             <configuration>
                 <scanIntervalSeconds>10</scanIntervalSeconds>
                 <stopKey>STOP</stopKey>

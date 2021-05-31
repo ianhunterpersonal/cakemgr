@@ -4,5 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+    <servlet-name>Cakes</servlet-name>
+    <servlet-class>com.waracle.cakemgr.CakeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cakes</servlet-name>
+    <url-pattern>/cakes</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
 
