@@ -3,6 +3,8 @@ package com.waracle.cakemgr;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
+import com.waracle.cakemgr.model.CakeEntity;
+
 import org.hibernate.Session;
 import org.hibernate.exception.ConstraintViolationException;
 
