@@ -41,7 +41,7 @@ public class DataLoader {
 
   		CakeDTO[] entitiesFromSrc = objectMapper.readValue(initDataURL, CakeDTO[].class);
 
-  		Arrays.asList(entitiesFromSrc).stream().distinct().forEach(cakeService::addCake);
+  		Arrays.asList(entitiesFromSrc).stream().distinct().forEach(cakeService::addCake); // Note distinct voids duplicated found in source data
 
   		cakeService.fetchAll().stream().forEach(System.out::println);
   		
