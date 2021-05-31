@@ -56,7 +56,7 @@ public class CakeServlet extends HttpServlet {
                 cakeEntity.setDescription(parser.nextTextValue());
 
                 System.out.println(parser.nextFieldName());
-                cakeEntity.setImage(parser.nextTextValue());
+                cakeEntity.setImageUrl(parser.nextTextValue());
 
                 Session session = HibernateUtil.getSessionFactory().openSession();
                 try {
@@ -96,7 +96,7 @@ public class CakeServlet extends HttpServlet {
 
             resp.getWriter().println("\t\t\"title\" : " + entity.getTitle() + ", ");
             resp.getWriter().println("\t\t\"desc\" : " + entity.getDescription() + ",");
-            resp.getWriter().println("\t\t\"image\" : " + entity.getImage());
+            resp.getWriter().println("\t\t\"image\" : " + entity.getImageUrl());
 
             resp.getWriter().println("\t}");
         }

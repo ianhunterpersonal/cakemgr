@@ -3,3 +3,10 @@ Updates to Project Summary...
 1. Added more comprehensive .gitignore
 2. Fixed issue in which 404 recieved on endpoint /cakes, also restructured packages to be eclipse friendly
 3. Create a minimal starting spring boot application with HSQLDB as embedded memory DB
+4. Create stack for spring boot application Controller, Service, Repository, DTO and Entity.
+   Implemented a DataLoader to load up initial data when Spring Boot application starts.
+   Modified Entity from original, adding use of lombok and correcting entity structure to match Cake rather than Employee
+   Modified description field JSON of CakeEntity to match incoming data from initial data source (JSON field 'descr')
+   Modified CakeEntity ID field to allow null. In Spring JPA null is used to indicated adding a new record, so this must be
+   allowed
+   Implemented minimal Controller to return all cakes on /cakes in JSON as per original application.
