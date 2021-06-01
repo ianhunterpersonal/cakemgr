@@ -10,3 +10,4 @@ Updates to Project Summary...
    Modified CakeEntity ID field to allow null. In Spring JPA null is used to indicated adding a new record, so this must be
    allowed
    Implemented minimal Controller to return all cakes on /cakes in JSON as per original application.
+5. Added unit and integration test suites. Also refactored controller with simple error handling (only one application exception)

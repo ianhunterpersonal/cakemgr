@@ -1,7 +1,6 @@
 package com.waracle.cakemgr.service;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
@@ -23,34 +22,40 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class DataLoader {
 
-    @Autowired
-    private CakeRepository cakeRepository;
-
- 	@Autowired
- 	private CakeService					cakeService;
+	@Autowired
+	private CakeRepository	cakeRepository;
 
 	@Autowired
-	private ObjectMapper					objectMapper;
+	private CakeService		cakeService;
 
-    //method invoked during the startup
-    @PostConstruct
-    public void loadData() throws JsonParseException, JsonMappingException, IOException {
-   	 
-   	log.info("Loading Data");
-  		URL initDataURL = new URL("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json");
+	@Autowired
+	private ObjectMapper		objectMapper;
 
-  		CakeDTO[] entitiesFromSrc = objectMapper.readValue(initDataURL, CakeDTO[].class);
+	// method invoked during the startup
+	@PostConstruct
+	public void loadData() throws JsonParseException, JsonMappingException, IOException {
 
-  		Arrays.asList(entitiesFromSrc).stream().distinct().forEach(cakeService::addCake); // Note distinct voids duplicated found in source data
+		log.info("Loading Data");
+		URL initDataURL = new URL("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json");
 
-  		cakeService.fetchAll().stream().forEach(System.out::println);
-  		
-    }
+		CakeDTO[] entitiesFromSrc = objectMapper.readValue(initDataURL, CakeDTO[].class);
 
-    //method invoked during the shutdown
-    @PreDestroy
-    public void removeData() {
-   	 cakeRepository.deleteAll();
-    }
-    
+		Arrays.asList(entitiesFromSrc).stream().distinct().forEach(t -> {
+			try {
+				cakeService.addCake(t);
+			} catch (Throwable e) {
+				log.error("Could not add Cake " + t.getTitle() + ". Duplicate title?");
+			}
+		}); // Note distinct voids duplicated found in source data
+
+		cakeService.fetchAll().stream().forEach(System.out::println);
+
+	}
+
+	// method invoked during the shutdown
+	@PreDestroy
+	public void removeData() {
+		cakeRepository.deleteAll();
+	}
+
 }

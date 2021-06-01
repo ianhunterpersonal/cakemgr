@@ -14,4 +14,6 @@ public interface CakeRepository extends CrudRepository<CakeEntity, Integer> {
 
 	public boolean existsById(Integer id);
 
+	public boolean existsByTitle(String title);
+
 }

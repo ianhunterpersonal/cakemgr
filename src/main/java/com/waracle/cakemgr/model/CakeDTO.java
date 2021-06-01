@@ -11,7 +11,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.With;
 
 @Data
 @NoArgsConstructor
@@ -26,7 +25,6 @@ public class CakeDTO implements Serializable {
 	@EqualsAndHashCode.Exclude
 	private Integer				id;
 
-	@With
 	private String					title;
 
 	@JsonProperty("desc")
