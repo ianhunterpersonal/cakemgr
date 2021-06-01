@@ -1,0 +1,22 @@
+#cakes {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+#cakes td, #cakes th {
+  border: 2px solid #ddd;
+  padding: 8px;
+}
+
+#cakes tr:nth-child(even){background-color: #f2f2f2;}
+
+#cakes tr:hover {background-color: #ddd;}
+
+#cakes th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #fffacd;
+  color: #0005dd;
+}

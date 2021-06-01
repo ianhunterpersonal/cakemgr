@@ -3,10 +3,13 @@
 <head>
 <title>Cakes</title>
 <meta charset="UTF-8" />
+
+<link href="../css/styles.css" rel="stylesheet">
+
 </head>
 <body>
 
-	<form method="POST" th:object="${cakeToAdd}" th:action="@{/add_cake}">
+	<form method="POST" th:object="${cakeToAdd}" th:action="@{/add_cake}" >
 		<h4>Enter a new cake...</h4>
 		<table>
 			<tr>
@@ -21,16 +24,22 @@
 				<td><label for="imageUrl">Image URL</label></td>
 				<td><input type="text" th:field="*{imageUrl}" />(Mandatory)</td>
 			</tr>
+			<tr>
+				<td></td>
+				<td><button>Submit</button></td>
+			</tr>
+			
+					
+			
 		</table>
 
-		<button>Submit</button>
 
 	</form>
 
 	<br />
 
 	<h2>Cake List...</h2>
-	<table style="border-collapse: collapse;" border>
+	<table id="cakes">
 		<tr>
 			<th>Title</th>
 			<th>Description</th>
