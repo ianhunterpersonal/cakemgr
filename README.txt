@@ -55,3 +55,52 @@ share it with us.
 Please also keep a log of the changes you make as a text file and provide this to us with your submission.
 
 Good luck!
+
+==========================================================================================
+
+Updates to the Project (Ian Hunter 1/6/2021)
+
+Documentation
+============
+This email constitutes a getting started, and has been appended to README.txt. In addition
+logged changes are in a file UPDATES.txt in the root folder.
+
+Download
+========
+With git installed, git clone https://github.com/ianhunterpersonal/cakemgr.git
+shoulddownload the source code into a local folder cakemgr
+
+Build and Test
+===========
+Ensure maven is installed and available on command line
+
+In downloaded folder, execute
+
+   mvn clean compile test
+
+to build the application and run unit and integration tests.
+
+Running
+======
+This is a basic Spring Boot application and to run it use maven...
+
+   mvn spring-boot:run
+
+This will start the web server in the application on port 8282
+
+Connecting from client
+======================
+The REST API for the application is on end point 'cakes' and supports listing the current cakes and adding a new cake.
+As an example client, POSTMAN can be used and the following request examples should work...
+
+GET http://localhost:8282/cakes - Lists all cakes in database in JSON format
+
+POST http://localhost:8282/cakes - Adds a new cake to the database.
+Example JSON for the Body is...
+
+{ "title" : "NewTitle1", "desc" : "NewDescription", "image" : "url"}
+
+The updated Cake in the database is returned as JSON. The title should be unique within the database, and URL must not be empty
+
+Note - if an error occurs, you get a simple message which can be used to determine the problem.
+

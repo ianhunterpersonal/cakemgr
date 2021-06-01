@@ -14,3 +14,4 @@ Updates to Project Summary...
 6. Implemented a crude HTML interface on the root URL '/, adding the CakeHtmlController and using thymeleaf.
 7. Added a new exception for blank image URL. The original entity had this as non null.
 8. Now centralised exception handling to base controller.
+9. More documentation
