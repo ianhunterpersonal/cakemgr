@@ -7,11 +7,21 @@
 <body>
 
 	<form method="POST" th:object="${cakeToAdd}" th:action="@{/add_cake}">
-		<h4>Enter a your cake</h4>
-
-		<label for="title">Cake title</label> <input type="text" th:field="*{title}" /></br>
-		<label for="description">Cake Descr</label> <input type="text" th:field="*{description}" /></br>
-		<label for="imageUrl">Cake Image Url</label> <input type="text" th:field="*{imageUrl}" /></br>
+		<h4>Enter a new cake...</h4>
+		<table>
+			<tr>
+				<td><label for="title">Title</label></td>
+				<td><input type="text" th:field="*{title}" /></td>
+			</tr>
+			<tr>
+				<td><label for="description">Description</label></td>
+				<td><input type="text" th:field="*{description}" /></td>
+			</tr>
+			<tr>
+				<td><label for="imageUrl">Image URL</label></td>
+				<td><input type="text" th:field="*{imageUrl}" />(Mandatory)</td>
+			</tr>
+		</table>
 
 		<button>Submit</button>
 
@@ -27,10 +37,11 @@
 		</tr>
 		<th:block th:each="cake : ${cakes}">
 			<tr>
-				<td><a th:href="${cake.imageUrl}"><div th:text="${cake.title}" /></a></td>
+				<td><a th:href="${cake.imageUrl}"><p th:text="${cake.title}" ></p></a></td>
 				<td th:text="${cake.description}">...</td>
 			</tr>
 		</th:block>
 	</table>
 </body>
 </html>
+

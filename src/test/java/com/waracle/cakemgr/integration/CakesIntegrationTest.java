@@ -110,6 +110,46 @@ public class CakesIntegrationTest {
 
 	}
 
+	@Test
+	public void testAddNewCakeWithEmptyUrlFails() throws Exception {
+
+		Assert.assertEquals(0, cakeRepository.count()); // Cross check
+
+		final String DUPLICATED_TITLE = "EXISTING_TITLE";
+		
+		// Try to add cake with empty image URL
+		CakeDTO cakeToAdd = CakeDTO.builder().title(DUPLICATED_TITLE).imageUrl("").description("newDescription").build();
+
+		HttpEntity<CakeDTO> entity = new HttpEntity<>(cakeToAdd, new HttpHeaders());
+
+		ResponseEntity<String> response = restTemplate.exchange(endpointUrl(), HttpMethod.POST, entity, String.class);
+
+		Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+		
+		Assert.assertEquals(String.format("Cake must have an Image URL"), response.getBody());
+
+	}
+
+	@Test
+	public void testAddNewCakeWithNullUrlFails() throws Exception {
+
+		Assert.assertEquals(0, cakeRepository.count()); // Cross check
+
+		final String DUPLICATED_TITLE = "EXISTING_TITLE";
+		
+		// Try to add cake with empty image URL
+		CakeDTO cakeToAdd = CakeDTO.builder().title(DUPLICATED_TITLE).imageUrl(null).description("newDescription").build();
+
+		HttpEntity<CakeDTO> entity = new HttpEntity<>(cakeToAdd, new HttpHeaders());
+
+		ResponseEntity<String> response = restTemplate.exchange(endpointUrl(), HttpMethod.POST, entity, String.class);
+
+		Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+		
+		Assert.assertEquals(String.format("Cake must have an Image URL"), response.getBody());
+
+	}
+
 	private void assertRestResultsAgainstDatabase(CakeDTO[] fromRest, CakeEntity[] testData) {
 		assertRestResultsAgainstDatabase(Arrays.asList(fromRest), Arrays.asList(testData));
 	}

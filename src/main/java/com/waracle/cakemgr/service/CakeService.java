@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.waracle.cakemgr.exceptions.DuplicateTitleException;
+import com.waracle.cakemgr.exceptions.EmptyUrlException;
 import com.waracle.cakemgr.model.CakeConverter;
 import com.waracle.cakemgr.model.CakeDTO;
 import com.waracle.cakemgr.model.CakeEntity;
@@ -31,9 +32,7 @@ public class CakeService {
 
 	public CakeDTO addCake(CakeDTO dto) throws RuntimeException {
 
-		if (cakeRepository.existsByTitle(dto.getTitle())) {
-			throw new DuplicateTitleException(dto.getTitle());
-		}
+		validateDto(dto); // Throws if invalid
 		
 		CakeEntity toSave = new CakeConverter().from(dto);
 
@@ -41,4 +40,14 @@ public class CakeService {
 		return cakeConverter.from(saved);
 	}
 
+	private void validateDto(CakeDTO dto) throws RuntimeException {
+
+		if ((dto.getImageUrl() == null) || dto.getImageUrl().isBlank()) {
+			throw new EmptyUrlException();
+		}
+
+		if (cakeRepository.existsByTitle(dto.getTitle())) {
+			throw new DuplicateTitleException(dto.getTitle());
+		}
+	}
 }
