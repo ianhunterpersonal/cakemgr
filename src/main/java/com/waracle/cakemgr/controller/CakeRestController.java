@@ -23,17 +23,20 @@ import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Log4j2
-@RequestMapping(value = "/")
-public class CakeController {
+@RequestMapping(value = "/cakes")
+public class CakeRestController {
 
 	@SuppressWarnings("rawtypes")
-	@GetMapping(value = {"cakes",""} , produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "" , produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> fetchAll() throws EntityNotFoundException {
 		return new ResponseEntity<List>(cakeService.fetchAll(), HttpStatus.OK);
 	}
 	
-	@PostMapping(value = {"cakes",""} , consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addNewCake(@RequestBody CakeDTO cakeDTO) {
+		if (cakeDTO.getImageUrl() == null) {
+			throw new IllegalArgumentException();
+		}
 		return new ResponseEntity<CakeDTO>(cakeService.addCake(cakeDTO), HttpStatus.OK);
 	}
 	

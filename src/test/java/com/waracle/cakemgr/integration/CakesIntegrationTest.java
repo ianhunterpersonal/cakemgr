@@ -23,7 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.waracle.cakemgr.controller.CakeController;
+import com.waracle.cakemgr.controller.CakeRestController;
 import com.waracle.cakemgr.model.CakeConverter;
 import com.waracle.cakemgr.model.CakeDTO;
 import com.waracle.cakemgr.model.CakeEntity;
@@ -31,7 +31,7 @@ import com.waracle.cakemgr.repository.CakeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CakeRestTest {
+public class CakesIntegrationTest {
 
 	@Before
 	public void setUp() throws Exception {
@@ -139,7 +139,7 @@ public class CakeRestTest {
 	TestRestTemplate restTemplate = new TestRestTemplate();
 	
 	@Autowired
-	CakeController			sc;
+	CakeRestController			sc;
 
 	@Autowired
 	ObjectMapper			objectMapper;

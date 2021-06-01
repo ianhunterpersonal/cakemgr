@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cakes</title>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<form method="POST" th:object="${cakeToAdd}" th:action="@{/add_cake}">
+		<h4>Enter a your cake</h4>
+
+		<label for="title">Cake title</label> <input type="text" th:field="*{title}" /></br>
+		<label for="description">Cake Descr</label> <input type="text" th:field="*{description}" /></br>
+		<label for="imageUrl">Cake Image Url</label> <input type="text" th:field="*{imageUrl}" /></br>
+
+		<button>Submit</button>
+
+	</form>
+
+	<br />
+
+	<h2>Cake List...</h2>
+	<table style="border-collapse: collapse;" border>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+		</tr>
+		<th:block th:each="cake : ${cakes}">
+			<tr>
+				<td><a th:href="${cake.imageUrl}"><div th:text="${cake.title}" /></a></td>
+				<td th:text="${cake.description}">...</td>
+			</tr>
+		</th:block>
+	</table>
+</body>
+</html>

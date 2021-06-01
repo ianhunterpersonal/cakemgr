@@ -11,3 +11,4 @@ Updates to Project Summary...
    allowed
    Implemented minimal Controller to return all cakes on /cakes in JSON as per original application.
 5. Added unit and integration test suites. Also refactored controller with simple error handling (only one application exception)
+6. Implemented a crude HTML interface on the root URL '/, adding the CakeHtmlController and using thymeleaf.

@@ -31,10 +31,11 @@ import lombok.extern.log4j.Log4j2;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = {
-		CakeController.class
+		CakeRestController.class,
+		CakeHtmlController.class
 })
 @Log4j2
-public class CakeControllerTest {
+public class CakeRestControllerTest {
 
 	@Autowired
 	private MockMvc						mockMvc;
