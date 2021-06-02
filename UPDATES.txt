@@ -16,3 +16,4 @@ Updates to Project Summary...
 8. Now centralised exception handling to base controller.
 9. More documentation
 10. Styled up the HTML page a bit
+11. Last minute quick correction to put images inline in the HTML

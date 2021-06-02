@@ -102,6 +102,19 @@ public class CakeRestControllerTest {
 
 	}
 
+	@Test
+	public void testInternalException() throws Throwable {
+
+		CakeDTO cakeToAdd = CakeDTO.builder().id(null).title("NewCake").imageUrl("NewCakeURL").description("NewCakeDescr").build();
+		
+		Mockito.when(cakeService.addCake(Mockito.any(CakeDTO.class))).thenThrow(new RuntimeException("Bad thing happened"));
+
+		String requestBodyJson = objectMapper.writeValueAsString(cakeToAdd);
+		RequestBuilder rb = MockMvcRequestBuilders.post("/cakes").content(requestBodyJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+		MvcResult r = mockMvc.perform(rb).andExpect(status().isInternalServerError()).andReturn();
+
+	}
+
 	private String convertToJson(List<CakeDTO> dtoList) {
 		StringBuilder sb = new StringBuilder("[");
 		sb.append(dtoList.stream().map(r -> {

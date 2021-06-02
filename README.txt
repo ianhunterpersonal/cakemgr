@@ -104,3 +104,27 @@ The updated Cake in the database is returned as JSON. The title should be unique
 
 Note - if an error occurs, you get a simple message which can be used to determine the problem.
 
+Outstanding Issue
+=================
+
+The following outstanding issues are declared...
+
+1. OAuth not implemented
+2. No containerisation
+3. No CI attempted.
+4. Test coverage is high, but could do with further investigation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

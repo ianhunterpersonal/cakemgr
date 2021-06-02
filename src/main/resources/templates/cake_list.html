@@ -42,11 +42,13 @@
 	<table id="cakes">
 		<tr>
 			<th>Title</th>
+			<th>Image</th>
 			<th>Description</th>
 		</tr>
 		<th:block th:each="cake : ${cakes}">
 			<tr>
-				<td><a th:href="${cake.imageUrl}"><p th:text="${cake.title}" ></p></a></td>
+				<td th:text="${cake.title}">N/A</td>
+				<td><img th:src="${cake.imageUrl}" alt="No image available"></td>
 				<td th:text="${cake.description}">...</td>
 			</tr>
 		</th:block>
