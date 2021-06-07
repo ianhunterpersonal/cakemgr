@@ -218,7 +218,7 @@ pipeline {
             // Let's wipe out the workspace before we finish!
             deleteDir()
         }
-        success {
+/*        success {
             sendEmail("Successful");
         }
         unstable {
@@ -226,7 +226,7 @@ pipeline {
         }
         failure {
             sendEmail("Failed");
-        }
+        } */
     }
 
 // The options directive is for configuration that applies to the whole job.
