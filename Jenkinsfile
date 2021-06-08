@@ -10,6 +10,7 @@ pipeline {
 
         stage('Build') { 
             steps {
+                echo 'Pulling...' + env.BRANCH_NAME
                 sh 'mvn -B clean package' 
             }
         } 
