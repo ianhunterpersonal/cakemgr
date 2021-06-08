@@ -6,10 +6,7 @@ pipeline {
         EMAIL_RECIPIENTS = 'ian.hunter.personal@gmail.com'
         MAVEN_VER='3.6.1'
     }
-    tool {
-    	maven: Maven
-    }
-     stages {
+    stages {
 
         stage('Build') { 
             steps {
