@@ -10,10 +10,16 @@ pipeline {
     triggers { cron('H */4 * * 1-5') }
     
     stages {
-        stage('Clean') { 
+        stage('Build') { 
             steps {
-                echo 'Pulling...' + env.BRANCH_NAME
+                echo 'Building..' + env.BRANCH_NAME
                 sh 'mvn -B clean install' 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                echo 'Deploying to docker...' + env.BRANCH_NAME
+                sh 'mvn -B -Dmaven.test.skip=true spring-boot:build-image -Dspring-boot.build-image.imageName=totnesjava/cakemgr' 
             }
         }
      }
