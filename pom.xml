@@ -11,6 +11,9 @@
 
 	<properties>
 		<jettyVersion>9.4.41.v20210516</jettyVersion>
+		<docker.plugin.version>1.4.13</docker.plugin.version>
+		<dockerImageName>totnesjava/cakemgr</dockerImageName>
+		<!-- <dockerImageName>${project.groupId}/${project.artifactId}:${project.version}</dockerImageName> -->
 	</properties>
 
 	<parent>
@@ -167,6 +170,14 @@
 				</configuration>
 			</plugin>
 
+<<<<<<< HEAD
+=======
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+>>>>>>> 36af699... Debug of Jenkinsfile
 		</plugins>
 	</build>
 </project>
