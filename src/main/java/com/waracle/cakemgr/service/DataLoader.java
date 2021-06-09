@@ -44,7 +44,7 @@ public class DataLoader {
 			try {
 				cakeService.addCake(t);
 			} catch (Throwable e) {
-				log.error("Could not add Cake " + t.getTitle() + ". Duplicate title?");
+				log.error("Could not add Cake " + t.getTitle() + ". Duplicate title? (" + e.getMessage() + ")");
 			}
 		}); // Note distinct voids duplicated found in source data
 

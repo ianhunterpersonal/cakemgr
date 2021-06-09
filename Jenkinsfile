@@ -13,7 +13,7 @@ pipeline {
         stage('Build') { 
             steps {
                 echo 'Pulling...' + env.BRANCH_NAME
-                sh 'mvn -B clean package' 
+                sh 'mvn -B clean install' 
             }
         }
      }
