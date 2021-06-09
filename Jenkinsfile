@@ -7,13 +7,13 @@ pipeline {
         MAVEN_VER='3.6.1'
     }
     
-    triggers { pollSCM('H */4 * * 1-5') }
+    triggers { cron('H */4 * * 1-5') }
     
     stages {
-        stage('Build') { 
+        stage('Clean') { 
             steps {
                 echo 'Pulling...' + env.BRANCH_NAME
-                sh 'mvn -B clean package' 
+                sh 'mvn -B clean install' 
             }
         }
      }
